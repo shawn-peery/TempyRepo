@@ -1,23 +1,71 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Password Reset.</title>
-    </head>
-    <body>
-        <h1>Password Reset</h1>
-        <p>Please update your password below.</p>
-        <hr>
-        <br>
-        <form class="container">
-            <label for="password"><b>New Password:</b></label>
-            <input type="text" placeholder="New Password" name="newPsw" id="newPsw" required>
-        <br>
-        <br>
-            <label for="psw confirm"><b>Confirm New Password:</b></label>
-            <input type="password" placeholder="Confirm New Password" name="newPsw-confirm" id="newPsw-confirm" required>
-        <br>
-        <br>
-            <input type="submit" value="submit">
-        </form>
-    </body>
+	<head>
+		<title>Password Reset.</title>
+	</head>
+	<body>
+        <header>
+			<% if (passwordChange.error) { %>
+
+			<h1><%= passwordChange.error %></h1>
+
+			<% }%>
+
+            <% if (passwordChange.success) { %>
+
+			<h1><%= passwordChange.success %></h1>
+
+			<% }%>
+		</header>
+        <% if (!passwordChange.error && !passwordChange.success) { %>
+		<h1>Password Reset</h1>
+		<p>Please update your password below.</p>
+		<hr />
+		<br />
+		<form class="" action="/api/users" method="post">
+			<label for="newPsw"><b>New Password:</b></label>
+			<input
+				type="text"
+				placeholder="New Password"
+				name="newPsw"
+				value="<%=
+                    passwordChange.newPsw
+		        %>"
+
+                id="newPsw" required 
+            />
+			<br />
+			<br />
+			<label for="newPswCfm"><b>Confirm New Password:</b></label>
+			<input
+				type="password"
+				placeholder="Confirm New Password"
+				name="newPswCfm"
+				
+                value="<%=
+                    passwordChange.newPswCfm
+				%>"
+                
+                id="newPswCfm" required 
+                />
+			<br />
+			<br />
+            <label for="email"><b>Email:</b></label>
+			<input
+				type="email"
+				placeholder="Email Address"
+				name="email"
+				
+                value="<%=
+                    passwordChange.email
+				%>"
+                
+                id="email" required 
+                />
+			<br />
+			<br />
+			<input type="submit" value="submit" />
+		</form>
+        <% }%>
+	</body>
 </html>

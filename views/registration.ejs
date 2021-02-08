@@ -1,41 +1,88 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Registration</title>
-    </head>
-    <body>
-        <form class="" action="/api/users" method="post"> 
-            <h1 id="reg">Register</h1>
-            <p>Please fill out this form to create an account.</p>
-            <hr>
-        <br>
-            <label for="First name"><b>First Name:</b></label>
-            <input type="text" placeholder="First Name" id="fName" class="field" required />
-        <br>
-        <br>
-            <label for="Last Name"><b>Last Name:</b></label>
-            <input type="text" placeholder="Last Name" id="lName" class="field" required />
-        <br>
-        <br>
-            <label for="Email"><b>Email:</b></label>
-            <input type="text" placeholder="Email" id="email" class="field" required />
-        <br>
-        <br>
-            <label for="password"><b>Password:</b></label>
-            <input type="password" placeholder="Password" id="password" class="field" required />
-        <br>
-        <br>
-            <label for="psw confirm"><b>Confirm Password:</b></label>
-            <input type="password" placeholder="Confirm Password" id="confirm" class="field" required />
-        <br>
-        <br>
-        <button type="submit" name="button">
-            Submit
-        </button>
-    </form>
-        <br>
-        <p id="put"></p>
-<!-- 
+	<head>
+		<title>Registration</title>
+	</head>
+	<body>
+		<header>
+			<% if (registration.success) { %>
+
+			<h1><%= registration.success %></h1>
+
+			<% }%>
+		</header>
+		<% if (!registration.success) { %>
+		<form class="" action="/api/users" method="post">
+			<h1 id="reg">Register</h1>
+			<p>Please fill out this form to create an account.</p>
+			<hr />
+			<br />
+			<label for="First name"><b>First Name:</b></label>
+			<input
+				type="text"
+				placeholder="First Name"
+				id="fName"
+				class="field"
+				name="firstName"
+				value="<%= registration.firstName %>"
+				required
+			/>
+			<br />
+			<br />
+			<label for="Last Name"><b>Last Name:</b></label>
+			<input
+				type="text"
+				placeholder="Last Name"
+				id="lName"
+				class="field"
+				name="lastName"
+				value="<%= registration.lastName %>"
+				required
+			/>
+			<br />
+			<br />
+			<label for="email"><b>Email:</b></label>
+			<input
+				type="text"
+				placeholder="Email"
+				id="email"
+				class="field"
+				name="email"
+				value="<%= registration.email %>"
+				required
+			/>
+			<br />
+			<br />
+			<label for="password"><b>Password:</b></label>
+			<input
+				type="password"
+				placeholder="Password"
+				id="password"
+				class="field"
+				name="password"
+				value="<%= registration.password %>"
+				required
+			/>
+			<br />
+			<br />
+			<label for="psw confirm"><b>Confirm Password:</b></label>
+			<input
+				type="password"
+				placeholder="Confirm Password"
+				id="confirm"
+				class="field"
+				name="confirmPassword"
+				value="<%= registration.confirmPassword %>"
+				required
+			/>
+			<br />
+			<br />
+			<button type="submit">Submit</button>
+		</form>
+		<% }%>
+		<br />
+		<p id="put"></p>
+		<!-- 
         <script>
             function Submit() {
 
@@ -73,5 +120,5 @@
             }
                 
                 </script> -->
-             </body>
-        </html>
+	</body>
+</html>

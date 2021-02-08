@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Login</title>
+	</head>
+	<body>
+		<header>
+
+            <% if (credentials.error) { %>
+
+			<h1><%= credentials.error %></h1>
+
+			<% }%>
+
+			<% if (credentials.success) { %>
+
+			<h1><%= credentials.success %></h1>
+
+			<% }%>
+		</header>
+		<% if (!credentials.success && !credentials.error) { %>
+		<form class="" action="/api/users" method="post">
+			<h1 id="reg">Login</h1>
+			<p>Please fill out this form to login.</p>
+			<hr />
+			<br />
+			<label for="email"><b>Email:</b></label>
+			<input
+				type="text"
+				placeholder="Email"
+				id="email"
+				class="field"
+				name="email"
+				value="<%= credentials.email %>"
+				required
+			/>
+			<br />
+			<br />
+			<label for="password"><b>Password:</b></label>
+			<input
+				type="password"
+				placeholder="Password"
+				id="password"
+				class="field"
+				name="password"
+				value="<%= credentials.password %>"
+				required
+			/>
+			<br />
+			<br />
+			<button type="submit">Submit</button>
+		</form>
+		<% }%>
+		<br />
+		<p id="put"></p>
+		<!-- 
+        <script>
+            function Submit() {
+
+                const https = require('https')
+                const data = JSON.stringify({
+                    firstName: document.getElementById('fName'),
+                    lastName: document.getElementById('lName'),
+                    email: document.getElementById('email'),
+                    password: document.getElementById('password')
+                })
+                const options = {
+                    hostname: 'localhost',
+                    port: 3000,
+                    path:'/api/users',
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Content-Length': data.length
+                        
+                    }
+                }
+                const req = https.request(options, res => {
+                    console.log(`statusCode: ${res.statusCode}`)
+                    
+                    res.on('data', d => {
+                        process.stdout.write(d)
+                    })
+                })
+                req.on('error', error => {
+                    console.log(error)
+                })
+                
+                req.write(data)
+                req.end()
+            }
+                
+                </script> -->
+	</body>
+</html>
